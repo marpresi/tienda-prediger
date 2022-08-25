@@ -1,8 +1,8 @@
-export const CartWidget = ({productQuantity = 0}) => {
+export const CartWidget = ({cantArticulos}) => {
     return (<>
             <a href="/cart" className="nav-link text-success">
                 <i className="bi bi-cart p-1"></i>
-                { productQuantity > 0 ? productQuantity : '' }
+                { cantArticulos > 0 ? cantArticulos : 'no se han agregado ítems' }
             </a>
     </>);
 }

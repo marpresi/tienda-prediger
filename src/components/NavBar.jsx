@@ -1,5 +1,5 @@
 import {CartWidget} from './Cart/CartWidget';
-export const NavBar = ({tiendaName}) => {
+export const NavBar = ({tiendaName, cantArticulos}) => {
     return ( <>
       <header>
         <div className="px-3 py-2 text-bg-dark">
@@ -11,7 +11,7 @@ export const NavBar = ({tiendaName}) => {
               </a>
               <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                 <li>
-                  <CartWidget productQuantity="1"/>
+                  <CartWidget cantArticulos={cantArticulos}/>
                 </li>
               </ul>
             </div>
