@@ -1,18 +1,42 @@
-import { ItemCount } from "./Cart/ItemCount";
-import producto_1 from '../resources/images/producto_1.jpg';
+import { useState, useEffect } from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
 
-export const ItemListContainer = ({ greeting = "Bienvenido", onRefreshCarro }) => {
+import { Productos } from "../resources/data/productos";
+import { ItemList } from './Items/ItemList';
 
-    const agregarAlCarro = (cantidad) => {
-        onRefreshCarro(cantidad);
+export const ItemListContainer = ({ greeting = "Bienvenido" }) => {
+
+    let [loadingInProgress, setLoading] = useState(true);
+
+    const [productos, setProductos] = useState([]);
+
+
+    const getProductos = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Productos.length > 0) {
+                    resolve(Productos);
+                } else {
+                    reject('No se encontraron productos.');
+                }
+            }, 2000);
+        })
     }
 
-    const producto = {
-        id: 1,
-        titulo: 'Toallón  con Capucha y Orejas',
-        descripcion: 'Confeccionada con tela de toalla doble felpa con capucha en tela piqué o gabardina estampada 100 % algodón y en su interior en tela de toalla.',
-        imagen: producto_1,
-    };
+    useEffect(() => {
+        const cargarProductos = async () => {
+            try {
+                const productos = await getProductos();
+                setProductos(productos);
+                setLoading(false);
+                console.log(productos);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        cargarProductos();
+    }, [])
+
 
     return (<>
         <div className="container-fluid">
@@ -22,14 +46,8 @@ export const ItemListContainer = ({ greeting = "Bienvenido", onRefreshCarro }) =
                     <p className="lead mb-4">Esta pagina está creada con React y es el trabajo práctico de la clase de <a href="https://coderhouse.com" target="_blank">CoderHouse</a></p>
                 </div>
                 <hr />
-                <div className="col-lg-6 mx-auto">
-                    <ItemCount 
-                        producto={producto}
-                        stock={2}
-                        initial={1}
-                        onAdd={agregarAlCarro}/>
-                </div>
-
+                <ClipLoader color={'#c3c3c3'} loading={loadingInProgress} size={50} />
+                <ItemList productos={productos}/>
             </div>
         </div>
     </>);
