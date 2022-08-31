@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ClipLoader from "react-spinners/ClipLoader";
+import GridLoader from "react-spinners/GridLoader";
 
 import { Productos } from "../resources/data/productos";
 import { ItemList } from './Items/ItemList';
@@ -41,13 +41,8 @@ export const ItemListContainer = ({ greeting = "Bienvenido" }) => {
     return (<>
         <div className="container-fluid">
             <div className="px-4 py-5 my-5 text-center">
-                <h1 className="display-5 fw-bold">{greeting}</h1>
-                <div className="col-lg-6 mx-auto">
-                    <p className="lead mb-4">Esta pagina está creada con React y es el trabajo práctico de la clase de <a href="https://coderhouse.com" target="_blank">CoderHouse</a></p>
-                </div>
-                <hr />
-                <ClipLoader color={'#c3c3c3'} loading={loadingInProgress} size={50} />
-                <ItemList productos={productos}/>
+                <GridLoader color={'#c3c3c3'} loading={loadingInProgress} size={10} />
+                { (!loadingInProgress)? <ItemList productos={productos} /> : <p className="text-center">Cargando componente de lista...</p>}
             </div>
         </div>
     </>);

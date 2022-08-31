@@ -1,8 +1,3 @@
-import {useState} from  'react';
-
-import { ItemCount } from "../Cart/ItemCount";
-
-
 export const Item = ({ producto}) => {
 
     return (<>
@@ -27,8 +22,6 @@ export const Item = ({ producto}) => {
             <div className="card-footer">
                 <a href="#" className="btn btn-sm btn-primary">Ver detalle</a>
             </div>
-
-            
         </div>
     </>);
 }

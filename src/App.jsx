@@ -1,13 +1,16 @@
-import {useState} from  'react';
-import {ItemListContainer} from './components/ItemListContainer';
 import {NavBar} from './components/NavBar';
+import {ItemListContainer} from './components/ItemListContainer';
+import {ItemDetailContainer} from './components/ItemDetailContainer';
+
 
 
 function App() {
-  const [tienda, setTienda] = useState('Prediger'); 
+  const tienda = 'Prediger';
+
   return <>
     <NavBar tiendaName={`Tienda ${tienda}`} />
     <ItemListContainer greeting={`Bienvenido a la tienda de "${tienda}"`}/>
+    <ItemDetailContainer />
   </>
 }
 
