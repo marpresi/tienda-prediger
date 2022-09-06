@@ -1,21 +1,31 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import GridLoader from "react-spinners/GridLoader";
 
-import { Productos } from '../resources/data/productos';
-import { ItemDetail } from './ItemDetail/ItemDetail';
+import { Productos } from '../../resources/data/productos';
+import { ItemDetail } from './ItemDetail';
 
-export const ItemDetailContainer = () => {
+export const ItemDetailContainer = ({onAdd}) => {
+    const { id } = useParams();
 
     let [loadingInProgress, setLoading] = useState(true);
 
-    const [producto, setProducto] = useState([]);
+    const [producto, setProducto] = useState(null);
+    const [productoNoEncontrado, setProductoNoEncontrado] = useState('');
 
 
     const getProducto = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (Productos) {
-                    resolve(Productos[0]);
+                    const producto = Productos.find(p => p.id === parseInt(id));
+                    if(producto){
+                        resolve(producto);
+                    } else {
+                        reject('No se encontraró el producto seleccionado.')
+                    }
+
                 } else {
                     reject('No se encontraró el producto seleccionado.');
                 }
@@ -25,6 +35,7 @@ export const ItemDetailContainer = () => {
 
     useEffect(() => {
         const cargarProducto = async () => {
+            setLoading(true);
             try {
                 const producto = await getProducto();
                 setProducto(producto);
@@ -32,10 +43,12 @@ export const ItemDetailContainer = () => {
                 console.log(producto);
             } catch (err) {
                 console.log(err);
+                setLoading(false);
+                setProductoNoEncontrado(err);
             }
         }
         cargarProducto();
-    }, [])
+    }, [id])
 
 
     return (<>
@@ -43,7 +56,8 @@ export const ItemDetailContainer = () => {
             <div className="row">
                 <div className="px-4 py-5 my-5 text-center">
                     <GridLoader color={'#c3c3c3'} loading={loadingInProgress} size={10} />
-                    { (!loadingInProgress)? <ItemDetail producto={producto} /> : <p className="text-center">Cargando componente de detalle...</p>}
+                    { (!loadingInProgress && producto)? <ItemDetail producto={producto} onAdd={onAdd} /> : ''}
+                    { (!loadingInProgress && !producto)? <p>{productoNoEncontrado}</p> : ''}
                 </div>
             </div>
         </div>

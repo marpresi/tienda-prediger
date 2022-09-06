@@ -6,6 +6,7 @@ import producto_4 from '../images/producto_4.jpg';
 export const Productos = [
     {
         id: 1,
+        categoria: 'toallas',
         title: 'Toallón',
         description: 'Confeccionada con tela de toalla doble felpa con capucha en tela piqué o gabardina estampada 100 % algodón y en su interior en tela de toalla.',
         pictureUrl: producto_1,
@@ -15,6 +16,7 @@ export const Productos = [
     },
     {
         id: 2,
+        categoria: 'toallas',
         title: 'Toalla con Capucha',
         description: 'Confeccionada en tela de toalla doble felpa. Con Capucha en tela de algodón en su interior en toalla.',
         pictureUrl: producto_2,
@@ -24,6 +26,7 @@ export const Productos = [
     },
     {
         id: 3,
+        categoria: 'mantas',
         title: 'Mantas Polar y corderito',
         description: 'Confeccionada en tela polar soft y corderito suave. Mantita recibidora, también para usar en el cochecito y  en la cuna.',
         pictureUrl: producto_3,
@@ -33,6 +36,7 @@ export const Productos = [
     },
     {
         id: 4,
+        categoria: 'cambiadores',
         title: 'Cambiador para bolso',
         description: 'Exterior en tela matelasse de algodón, en su interior tela impermeable, para su mejor limpieza.',
         pictureUrl: producto_4,

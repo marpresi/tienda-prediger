@@ -1,6 +1,7 @@
 import { ItemCount } from "../Cart/ItemCount" 
 
-export const ItemDetail = ({producto}) => {
+export const ItemDetail = ({producto, onAdd}) => {
+
     return <>
         <h1 className="display-5 fw-bold">Detalle de producto</h1>
         <div className="container">
@@ -52,8 +53,7 @@ export const ItemDetail = ({producto}) => {
 							<span className="color blue"></span>
 						</h5>
 						<div className="action">
-                            <i>!!!! aquí falta que el componente reciba los props y darle algo mas de estilo!!!!</i>
-                            <ItemCount />
+                            <ItemCount stock={producto.stock} initial={producto.initial} onAdd={onAdd} />
 						</div>
 					</div>
 				</div>

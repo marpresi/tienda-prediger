@@ -20,7 +20,7 @@ export const Item = ({ producto}) => {
                 </ul>
             </div>
             <div className="card-footer">
-                <a href="#" className="btn btn-sm btn-primary">Ver detalle</a>
+                <button className="btn btn-sm btn-primary">Ver detalle</button>
             </div>
         </div>
     </>);
