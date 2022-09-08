@@ -1,6 +1,15 @@
+import { useState } from "react";
 import { ItemCount } from "../Cart/ItemCount" 
 
-export const ItemDetail = ({producto, onAdd}) => {
+export const ItemDetail = ({producto}) => {
+
+	const [cantArticulos,setCantArticulos] = useState('0');
+
+	const onAdd = (quantityToAdd) =>{
+	  console.log(`Se han registrado ${quantityToAdd} para este producto`);
+	  setCantArticulos(quantityToAdd);
+	}
+  
 
     return <>
         <h1 className="display-5 fw-bold">Detalle de producto</h1>
@@ -9,13 +18,10 @@ export const ItemDetail = ({producto, onAdd}) => {
 			<div className="container-fliud">
 				<div className="wrapper row">
 					<div className="preview col-md-6">
-						
 						<div className="preview-pic tab-content">
-						  <div className="tab-pane active" id="pic-1"><img src={producto.pictureUrl} /></div>
-						  <div className="tab-pane" id="pic-2"><img src={producto.pictureUrl} /></div>
-						  <div className="tab-pane" id="pic-3"><img src={producto.pictureUrl} /></div>
-						  <div className="tab-pane" id="pic-4"><img src={producto.pictureUrl} /></div>
-						  <div className="tab-pane" id="pic-5"><img src={producto.pictureUrl} /></div>
+						  <div className="tab-pane active" id="pic-1">
+							<img src={producto.pictureUrl} style={{maxHeight: '300px', width: 'auto'}} />
+						  </div>
 						</div>
 						<ul className="preview-thumbnail nav nav-tabs">
 						  <li className="active"><a data-target="#pic-1" data-toggle="tab"><img src={producto.pictureUrl} /></a></li>
@@ -36,10 +42,13 @@ export const ItemDetail = ({producto, onAdd}) => {
 								<span className="fa fa-star"></span>
 								<span className="fa fa-star"></span>
 							</div>
-							<span className="review-no">41 reviews</span>
+							<span className="review-no">Stock disponible: {(producto.stock === 0)? ' sin stock ' : producto.stock + ' unidades'}</span>
 						</div>
 						<p className="product-description">{producto.description}</p>
 						<h4 className="price">precio actual: <span>${producto.price}</span></h4>
+						<div className="action mt-1 mb-4">
+                            <ItemCount stock={producto.stock} initial={producto.initial} onAdd={onAdd} />
+						</div>
                         {/* To Do: hacer que las fotos se vean en galeria */}
 						<h5 className="sizes">tamaños:
 							<span className="size" data-toggle="tooltip" title="small">s</span>
@@ -52,9 +61,6 @@ export const ItemDetail = ({producto, onAdd}) => {
 							<span className="color green"></span>
 							<span className="color blue"></span>
 						</h5>
-						<div className="action">
-                            <ItemCount stock={producto.stock} initial={producto.initial} onAdd={onAdd} />
-						</div>
 					</div>
 				</div>
 			</div>

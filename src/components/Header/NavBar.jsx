@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import {CartWidget} from '../Cart/CartWidget';
-export const NavBar = ({tiendaName, cantArticulos}) => {
+export const NavBar = ({tiendaName}) => {
     return ( <>
       <header className="navbar navbar-expand-lg navbar-dark bg-dark bd-navbar sticky-top px-3 py-2 ">
           <div className="container-fluid">
@@ -37,7 +37,7 @@ export const NavBar = ({tiendaName, cantArticulos}) => {
                 </ul >
               </div>
               <div className="d-flex"> 
-                <CartWidget cantArticulos={cantArticulos}/>
+                <CartWidget/>
               </div>
             </div>
       </header>

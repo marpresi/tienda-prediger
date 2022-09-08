@@ -6,7 +6,7 @@ import GridLoader from "react-spinners/GridLoader";
 import { Productos } from '../../resources/data/productos';
 import { ItemDetail } from './ItemDetail';
 
-export const ItemDetailContainer = ({onAdd}) => {
+export const ItemDetailContainer = () => {
     const { id } = useParams();
 
     let [loadingInProgress, setLoading] = useState(true);
@@ -54,9 +54,9 @@ export const ItemDetailContainer = ({onAdd}) => {
     return (<>
         <div className="container-fluid">
             <div className="row">
-                <div className="px-4 py-5 my-5 text-center">
+                <div className="px-1 py-1 my-1 text-center">
                     <GridLoader color={'#c3c3c3'} loading={loadingInProgress} size={10} />
-                    { (!loadingInProgress && producto)? <ItemDetail producto={producto} onAdd={onAdd} /> : ''}
+                    { (!loadingInProgress && producto)? <ItemDetail producto={producto} /> : ''}
                     { (!loadingInProgress && !producto)? <p>{productoNoEncontrado}</p> : ''}
                 </div>
             </div>
