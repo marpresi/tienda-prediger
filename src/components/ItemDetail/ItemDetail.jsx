@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 import { ItemCount } from "../Cart/ItemCount" 
 
 export const ItemDetail = ({producto}) => {
+
+	const { addItem } = useContext(CartContext)
 
 	const [cantArticulos,setCantArticulos] = useState('0');
 
 	const onAdd = (quantityToAdd) =>{
 	  console.log(`Se han registrado ${quantityToAdd} para este producto`);
-	  setCantArticulos(quantityToAdd);
+	  const newProduct = {...producto, cantidad: quantityToAdd }
+	  console.log('new product', newProduct);
+	  addItem(newProduct);
 	}
   
 

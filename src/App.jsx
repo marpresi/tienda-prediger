@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { CartProvider } from './context/CartContext';
+
 import { NavBar } from './components/Header/NavBar';
 import { Contacto } from './pages/Contacto';
 import { Faq } from './pages/Faq';
@@ -16,25 +18,26 @@ function App() {
 
  
   return <>
-    <BrowserRouter>
-      <NavBar tiendaName={`Tienda ${tienda}`} />
-      <div className="container-fluid mt-3">
-          <div className="row">
-            <div className="col">
-              <Routes>
-                <Route path='/' element={<ItemListContainer />} />
-                <Route path='/category/:id' element={<ItemListContainer />} />
-                <Route path='/item/:id' element={<ItemDetailContainer/>} />
-                <Route path='/cart' element={<CartListContainer />} />
-                <Route path='/contacto' element={<Contacto />} />
-                <Route path='/faq' element={<Faq />} />
-                <Route path='*' element={<NoEncontrado />} /> 
-              </Routes>
+    <CartProvider>
+      <BrowserRouter>
+          <NavBar tiendaName={`Tienda ${tienda}`} />
+          <div className="container-fluid mt-3">
+              <div className="row">
+                <div className="col">
+                    <Routes>
+                      <Route path='/' element={<ItemListContainer />} />
+                      <Route path='/category/:id' element={<ItemListContainer />} />
+                      <Route path='/item/:id' element={<ItemDetailContainer/>} />
+                      <Route path='/cart' element={<CartListContainer />} />
+                      <Route path='/contacto' element={<Contacto />} />
+                      <Route path='/faq' element={<Faq />} />
+                      <Route path='*' element={<NoEncontrado />} /> 
+                    </Routes>
+                </div>
+            </div>
           </div>
-        </div>
-      </div>
-      
-    </BrowserRouter>
+      </BrowserRouter>
+    </CartProvider>
   </>
 }
 
