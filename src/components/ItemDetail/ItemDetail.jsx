@@ -1,4 +1,6 @@
 import { useContext, useState } from "react";
+import { Link } from 'react-router-dom';
+
 import { CartContext } from "../../context/CartContext";
 import { ItemCount } from "../Cart/ItemCount" 
 
@@ -6,12 +8,13 @@ export const ItemDetail = ({producto}) => {
 
 	const { addItem } = useContext(CartContext)
 
-	const [cantArticulos,setCantArticulos] = useState('0');
+	const [cantArticulos,setCantArticulos] = useState(0);
 
 	const onAdd = (quantityToAdd) =>{
 	  console.log(`Se han registrado ${quantityToAdd} para este producto`);
 	  const newProduct = {...producto, cantidad: quantityToAdd }
 	  console.log('new product', newProduct);
+	  setCantArticulos(quantityToAdd);
 	  addItem(newProduct);
 	}
   
@@ -52,7 +55,15 @@ export const ItemDetail = ({producto}) => {
 						<p className="product-description">{producto.description}</p>
 						<h4 className="price">precio actual: <span>${producto.price}</span></h4>
 						<div className="action mt-1 mb-4">
-                            <ItemCount stock={producto.stock} initial={producto.initial} onAdd={onAdd} />
+							{cantArticulos === 0? (
+								<ItemCount stock={producto.stock} initial={producto.initial} onAdd={onAdd} />
+							):(
+								<div>
+									<Link to="/" className="btn btn-sm btn-primary m-2">Seguir comprando</Link>
+									<Link to="/cart" className="btn btn-sm btn-success m-2">Finalizar compra</Link>
+								</div>
+							)}
+                            
 						</div>
                         {/* To Do: hacer que las fotos se vean en galeria */}
 						<h5 className="sizes">tamaños:
