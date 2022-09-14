@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+//import { collection, getDocs } from 'firebase/firestore';
 
 import GridLoader from "react-spinners/GridLoader";
 
 import { Productos } from "../../resources/data/productos";
+
+//import { db } from "../../utils/firebase";
+
 import { ItemList } from './ItemList';
 
 
@@ -43,8 +47,13 @@ export const ItemListContainer = () => {
         const cargarProductos = async () => {
             setLoading(true);
             try {
-                const result = await getProductos();
-                setProductos(result);
+                // const query = collection(db,'ItemCollection');
+                // const result = await getDocs(query);
+                // const docs = result.docs;
+                // console.log(docs[0].data());
+                // const data = docs.map(doc => {return {...doc.data(),id: doc.id}});
+                const data = await getProductos();
+                setProductos(data);
                 setLoading(false);
             } catch (err) {
                 setProductos([]);

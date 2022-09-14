@@ -1,15 +1,26 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 export const CartWidget = () => {
-    const cantArticulos = 0;
+
+    const { cartList, getTotalCount } = useContext(CartContext);
+    
+    
     return (<>
+                { getTotalCount() > 0 && 
 
                 <NavLink to="/cart" 
                     className={`nav-link text-success ${({isActive}) => isActive ? 'active': ''}`}
-                    title="Finalizar mi compra"
+                    title="Terminar mi compra"
                     >
                         <i className="bi bi-cart p-1"></i>
-                        { cantArticulos > 0 ? cantArticulos : 'no se han agregado ítems' }
+                        { getTotalCount() }
                 </NavLink>
+
+                
+                 
+
+                }
     </>);
 }

@@ -4,15 +4,18 @@ import { useContext } from "react";
 import { Link, NavLink } from 'react-router-dom';
 import { CartContext } from "../../context/CartContext";
 
-export const CartListContainer = () => {
+export const Cart = () => {
 
-    const { cartList, removeItem, clear } = useContext(CartContext);
+    const { cartList, removeItem, clear, getTotalCount, getTotalAmount } = useContext(CartContext);
 
     console.log('lista de productos del carrito', cartList);
 
 
-    return <>
+    return (<>
+        <div className="container-fluid">
+            <div className="px-4 text-center">
         {
+
             cartList.length > 0 ?
                 <>
                     <div>
@@ -53,12 +56,19 @@ export const CartListContainer = () => {
                             <tfoot>
                                 <tr>
                                     <th colSpan={4}>
-                                        Total
+                                        Total de Productos
                                     </th>
                                     <th>
-                                        {cartList.reduce((prev, cur) => {
-                                            return prev + (cur.price * cur.cantidad);
-                                        }, 0)}
+                                        { getTotalCount() }
+                                    </th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <th colSpan={4}>
+                                        Importe Total
+                                    </th>
+                                    <th>
+                                        { getTotalAmount() }
                                     </th>
                                     <th><button onClick={clear} className="btn  btn-outline-danger btn-sm" title="Esta acción eliminará todos los productos de su carrito.">VACIAR CARRITO</button></th>
                                 </tr>
@@ -81,5 +91,7 @@ export const CartListContainer = () => {
                    
                 </>
         }
-    </>
+        </div>
+        </div>
+    </>);
 }

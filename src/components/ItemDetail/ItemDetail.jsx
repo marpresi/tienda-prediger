@@ -60,7 +60,7 @@ export const ItemDetail = ({producto}) => {
 							):(
 								<div>
 									<Link to="/" className="btn btn-sm btn-primary m-2">Seguir comprando</Link>
-									<Link to="/cart" className="btn btn-sm btn-success m-2">Finalizar compra</Link>
+									<Link to="/cart" className="btn btn-sm btn-success m-2">Terminar mi compra</Link>
 								</div>
 							)}
                             

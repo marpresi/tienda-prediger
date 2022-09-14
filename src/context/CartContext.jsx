@@ -8,11 +8,11 @@ export const CartProvider = ({children}) => {
     const [ cartList, setCartList ] = useState([]);
 
     const addItem = (producto) => {
-        const idx = isInCart(producto.id);
-        if(idx > -1){
-            const tempCartList = cartList;
-            const cantActual = tempCartList[idx].cantidad;
-            tempCartList[idx].cantidad = cantActual + producto.cantidad;
+        const productoInCart = isInCart(producto.id);
+        if(productoInCart.exists){
+            const tempCartList = [...cartList];
+            const cantActual = tempCartList[productoInCart.idx].cantidad;
+            tempCartList[productoInCart.idx].cantidad = cantActual + producto.cantidad;
             setCartList(tempCartList);
         }else{
             const newCartList = [...cartList, producto];
@@ -31,12 +31,26 @@ export const CartProvider = ({children}) => {
     }
 
     const isInCart = (productoId) => {
-        return cartList.findIndex(item => item.id === productoId);
+        const exist = cartList.findIndex(item => item.id === productoId);
+        if(exist > -1){
+            return {exists: true, idx: exist};
+        } else{
+            return {exists: false, idx: undefined};
+        }
+        return 
+    }
+
+    const getTotalCount = () => {
+        return cartList.reduce((prev, cur) => prev + cur.cantidad, 0);
+    }
+
+    const getTotalAmount = () => {
+        return cartList.reduce((prev, cur) => {return prev + (cur.price * cur.cantidad);}, 0);
     }
 
 
     return (
-        <CartContext.Provider value={{cartList, addItem, removeItem, clear}} >
+        <CartContext.Provider value={{cartList, addItem, removeItem, clear, getTotalCount, getTotalAmount}} >
             {children}
         </CartContext.Provider>
     )
