@@ -4,14 +4,18 @@ import { Item } from './Item';
 
 export const ItemList = ({productos}) => {
     return (<>
-        <div className="col-lg-12 d-flex">
-            {
-                productos.map(producto =>(
-                    <Link key={producto.id} to={`/item/${producto.id}`} >
-                        <Item producto={producto}/>
-                    </Link>
-                ))
-            }
+        <div className="row">
+            
+                {
+                    productos.map(producto =>(
+                        <div className="col-lg-3" key={producto.id}> 
+                        <Link  to={`/item/${producto.id}`} style={{'textDecoration': 'none'}}>
+                            <Item producto={producto}/>
+                        </Link>
+                        </div>
+                    ))
+                }
+            
         </div>
     </>);
 }

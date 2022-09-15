@@ -172,3 +172,14 @@ img {
 .cart.list-group-item{
   background-color: transparent;
 }
+
+.text-description{
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  background: #fff;
+  position: relative;
+  height: 80px;
+}
