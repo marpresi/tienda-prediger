@@ -1,10 +1,29 @@
 # Proyecto
-Esta es una tienda de ropa para niños. 
-Próximamente la información será tomada desde una base de datos. Por el momento, y a los efectos de la prueba, el array de objetos se encuentra en `/resources/data/productos.js`
+Esta es una tienda de ropa para niños que permite la búsqueda y selección de un producto. Posee un carro de compras que permite registrar sus datos.
 
-## Librerias
-- En el proyecto se usa bootstrap nativo para los estilos. Me volqué mas por esta opción que por la de librerias que integran react y bootstrap ya que me pareció que iba a comprender mejor cada cosa por separado.
-- En el proyecto implementé una librería para manejar los efectos de loading: _react-spinners_
+## Secciones de la tienda
+### Inicio
+Permite listar el total de productos.
+### Categorías
+Permite filtrar entre las categorías: Toallas, Mantas y Cambiadores.
+### Detalle de producto
+Permite visualizar el detalle completo de un producto y seleccionar las cantidades a adquirir.
+### Carro de compras
+Permite visualizar los productos a adquirir y gestionar la orden de compra.
+### Contacto
+Muestra al usuario los datos de contacto del comercio.
+### Preguntas Frecuentes
+Muestra al usuario un listado de preguntas y respuestas para evacuar dudas.
+
+## Librerias mas importantes
+Este sitio está desarrollado utilizando:
+- [React](https://es.reactjs.org/) v18.2.0 
+- [Bootstrap](https://getbootstrap.com/) 5.2.0
+- [Bootstrap Icons](https://icons.getbootstrap.com/) 1.9.1
+- [Firebase](https://firebase.google.com/) 9.9.4
+- [React Router Dom](https://v5.reactrouter.com/web/guides/quick-start) 6.3.0
+- [React Spinners](https://www.npmjs.com/package/react-spinners) 0.13.4
+
 
 ## Demostración
 ![Peek 2022-09-06 08-41](https://user-images.githubusercontent.com/8338308/188627200-604000fc-8cbc-4016-9f45-ab7b5749aaa2.gif)
