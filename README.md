@@ -24,6 +24,24 @@ Este sitio está desarrollado utilizando:
 - [React Router Dom](https://v5.reactrouter.com/web/guides/quick-start) 6.3.0
 - [React Spinners](https://www.npmjs.com/package/react-spinners) 0.13.4
 
+## Requisitos de instalación
+- Node/npm: v14.17.1/8.5.2
+
+## Proceso de instalación
+- Clonar el Proyecto
+`git clone https://github.com/marpresi/tienda-prediger.git`
+
+- Acceder a tienda-prediger
+`cd tienda-prediger`
+
+- Instalar
+`npm install`
+
+- Montar sobre navegador
+`npm start`
+
+- Generar compilación para producción
+`npm build`
 
 ## Demostración
 ![Peek 2022-09-06 08-41](https://user-images.githubusercontent.com/8338308/188627200-604000fc-8cbc-4016-9f45-ab7b5749aaa2.gif)
