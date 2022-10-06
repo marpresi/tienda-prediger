@@ -1,7 +1,6 @@
 # Tienda Prediger
  - Versión 0.1.0
 
-
 ## Sobre el Proyecto
 Esta es una tienda de ropa para niños que permite la búsqueda y selección de un producto. Posee un carro de compras que permite registrar sus datos.
 
@@ -48,4 +47,4 @@ Este sitio está desarrollado utilizando:
 `npm build`
 
 ## Demostración
-![Peek 2022-09-06 08-41](https://user-images.githubusercontent.com/8338308/188627200-604000fc-8cbc-4016-9f45-ab7b5749aaa2.gif)
+![recorteFinal](https://user-images.githubusercontent.com/8338308/194439056-368f5553-4167-448b-b1bb-5de6b1f62579.gif)
