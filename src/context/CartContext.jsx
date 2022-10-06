@@ -1,23 +1,22 @@
 import { useState, createContext } from 'react';
-import { Productos } from '../resources/data/productos';
 
 export const CartContext = createContext();
 
-export const CartProvider = ({children}) => {
+export const CartProvider = ({ children }) => {
 
-    const [ cartList, setCartList ] = useState([]);
+    const [cartList, setCartList] = useState([]);
 
     const addItem = (producto) => {
         const productoInCart = isInCart(producto.id);
-        if(productoInCart.exists){
+        if (productoInCart.exists) {
             const tempCartList = [...cartList];
             const cantActual = tempCartList[productoInCart.idx].cantidad;
             tempCartList[productoInCart.idx].cantidad = cantActual + producto.cantidad;
             setCartList(tempCartList);
-        }else{
+        } else {
             const newCartList = [...cartList, producto];
             setCartList(newCartList);
-        }   
+        }
     }
 
     const removeItem = (productoId) => {
@@ -32,12 +31,12 @@ export const CartProvider = ({children}) => {
 
     const isInCart = (productoId) => {
         const exist = cartList.findIndex(item => item.id === productoId);
-        if(exist > -1){
-            return {exists: true, idx: exist};
-        } else{
-            return {exists: false, idx: undefined};
+        if (exist > -1) {
+            return { exists: true, idx: exist };
+        } else {
+            return { exists: false, idx: undefined };
         }
-        return 
+        return
     }
 
     const getTotalCount = () => {
@@ -45,12 +44,12 @@ export const CartProvider = ({children}) => {
     }
 
     const getTotalAmount = () => {
-        return cartList.reduce((prev, cur) => {return prev + (cur.price * cur.cantidad);}, 0);
+        return cartList.reduce((prev, cur) => { return prev + (cur.price * cur.cantidad); }, 0);
     }
 
 
     return (
-        <CartContext.Provider value={{cartList, addItem, removeItem, clear, getTotalCount, getTotalAmount}} >
+        <CartContext.Provider value={{ cartList, addItem, removeItem, clear, getTotalCount, getTotalAmount }} >
             {children}
         </CartContext.Provider>
     )
