@@ -47,4 +47,6 @@ Este sitio está desarrollado utilizando:
 `npm build`
 
 ## Demostración
-![recorteFinal](https://user-images.githubusercontent.com/8338308/194439056-368f5553-4167-448b-b1bb-5de6b1f62579.gif)
+![Peek 2022-10-07 09-52](https://user-images.githubusercontent.com/8338308/194559683-151b2190-2a62-4d2f-b11f-9dc22e6e8060.gif)
+
+
